@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World History Quiz: World History</title>
+    <style>
+        /* Styling for the quiz */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        #quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #question-container {
+            margin-top: 20px;
+        }
+
+        .choice-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .choice-button:hover {
+            background: #0056b3;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 5px solid #ccc;
+        }
+
+        #next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #next-button:disabled {
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>World History Quiz: New World STIMULUS1 Quiz</h1>
+        <div id="question-container"></div>
+        <button id="next-button">Next Question</button>
+        <div id="feedback"></div>
+    </div>
+    <script>
+        // JavaScript for quiz functionality
+        const questions = [
+{
+    question: "Excerpt from Leonardo da Vinci's Notebook (c. 1490): \n\n'There are three classes of people: those who see, those who see when they are shown, and those who do not see.'\n\nWhat does this statement suggest about the Renaissance mindset?",
+    choices: [
+        "A belief in human potential and the pursuit of knowledge",
+        "A rejection of religion and spirituality",
+        "A focus on blind adherence to tradition",
+        "An emphasis on military strength over intellectual growth"
+    ],
+    correctAnswer: 0,
+    explanation: "Leonardo's statement reflects the Renaissance emphasis on critical thinking, observation, and the value of human intellect."
+},
+{
+    question: "Excerpt from The Prince by Niccolò Machiavelli (1513): \n\n'A prince must be cunning as a fox and fierce as a lion. He must understand how to fight with laws and with force.'\n\nWhat Renaissance theme is reflected in this excerpt?",
+    choices: [
+        "The importance of religious devotion",
+        "The pursuit of individualism and pragmatism in leadership",
+        "A reliance on divine right to rule",
+        "A focus on chivalry and medieval ideals"
+    ],
+    correctAnswer: 1,
+    explanation: "Machiavelli emphasized pragmatism and adaptability in leadership, reflecting Renaissance ideas of individualism and realism."
+},
+{
+    question: "Excerpt from Vasco da Gama’s journal (1498): \n\n'We reached the shores of India, where merchants displayed spices of every kind. They were eager to barter for gold and silver.'\n\nWhat does this excerpt reveal about European exploration?",
+    choices: [
+        "The primary goal was the exchange of religious ideas",
+        "Europeans sought access to luxury goods and wealth",
+        "Exploration was driven by a desire to spread democracy",
+        "Europeans aimed to establish military alliances with India"
+    ],
+    correctAnswer: 1,
+    explanation: "Vasco da Gama's journal highlights the economic motivations of European exploration, particularly the desire to access spices and other goods."
+},
+{
+    question: "Excerpt from the writings of Erasmus, In Praise of Folly (1509): \n\n'What is more foolish than to seek wealth at the cost of virtue, or to value the body more than the soul?'\n\nWhat Renaissance theme does Erasmus critique in this work?",
+    choices: [
+        "The overemphasis on worldly wealth and materialism",
+        "The rejection of religious piety",
+        "The unquestioning obedience to monarchs",
+        "The scientific revolution and its methods"
+    ],
+    correctAnswer: 0,
+    explanation: "Erasmus critiques materialism and the neglect of moral and spiritual values, reflecting humanist concerns of the Renaissance."
+},
+{
+    question: "Excerpt from a letter by Christopher Columbus to King Ferdinand and Queen Isabella (1493): \n\n'There are trees of a thousand kinds and tall, and they seem to touch the sky. The land is full of marvels.'\n\nWhat does Columbus emphasize in his description of the New World?",
+    choices: [
+        "The military strength of indigenous peoples",
+        "The natural wealth and potential resources of the land",
+        "The similarities between the New World and Europe",
+        "The advanced technology of native civilizations"
+    ],
+    correctAnswer: 1,
+    explanation: "Columbus's letter highlights the abundance and potential wealth of the New World, emphasizing its resources."
+},
+{
+    question: "Excerpt from Martin Luther’s 95 Theses (1517): \n\n'Every truly repentant Christian has a right to full remission of penalty and guilt, even without indulgence letters.'\n\nWhat was Martin Luther criticizing in this statement?",
+    choices: [
+        "The practice of selling indulgences",
+        "The authority of monarchs over the Church",
+        "The translation of the Bible into vernacular languages",
+        "The spread of Renaissance humanism"
+    ],
+    correctAnswer: 0,
+    explanation: "Martin Luther criticized the sale of indulgences, challenging the Catholic Church's practice of granting forgiveness in exchange for money."
+},
+{
+    question: "Excerpt from the Treaty of Tordesillas (1494): \n\n'We divide the newly discovered lands, granting all lands to the west to Spain and all lands to the east to Portugal.'\n\nWhat was the purpose of this treaty?",
+    choices: [
+        "To prevent conflicts between European powers over new territories",
+        "To divide Africa between European nations",
+        "To establish trading rights for the Dutch and English",
+        "To promote cooperation between indigenous peoples and Europeans"
+    ],
+    correctAnswer: 0,
+    explanation: "The Treaty of Tordesillas divided new lands between Spain and Portugal to prevent conflict over exploration rights."
+},
+{
+    question: "Excerpt from Michelangelo’s diary (1512): \n\n'In painting the Sistine Chapel, I labored as if for God himself, though my hands grew weary and my spirit weak.'\n\nWhat does this reveal about Renaissance art?",
+    choices: [
+        "It was focused solely on artistic expression",
+        "It was often religiously inspired and demanded great dedication",
+        "It rejected religious themes in favor of secular ideas",
+        "It was seen as a casual and effortless pursuit"
+    ],
+    correctAnswer: 1,
+    explanation: "Michelangelo’s diary reflects the religious inspiration and dedication involved in Renaissance art."
+},
+{
+    question: "Excerpt from the writings of Petrarch (c. 1350): \n\n'What else, then, is all history, if not the praise of Rome?' \n\nHow does this excerpt reflect Renaissance humanism?",
+    choices: [
+        "It emphasizes the importance of studying classical civilizations",
+        "It criticizes the achievements of ancient Rome",
+        "It highlights the rejection of classical learning",
+        "It focuses on the moral decline of contemporary Europe"
+    ],
+    correctAnswer: 0,
+    explanation: "Petrarch’s writings reflect the Renaissance humanist emphasis on studying and praising the achievements of classical civilizations like Rome."
+},
+{
+    question: "Excerpt from Galileo Galilei’s Letter to the Grand Duchess Christina (1615): \n\n'I do not feel obliged to believe that the same God who has endowed us with sense, reason, and intellect has intended us to forgo their use.'\n\nWhat Renaissance value does Galileo emphasize?",
+    choices: [
+        "The rejection of religious beliefs",
+        "The importance of using reason and observation",
+        "The superiority of ancient scientific methods",
+        "The unquestioning acceptance of Church authority"
+    ],
+    correctAnswer: 1,
+    explanation: "Galileo’s letter reflects the Renaissance value of reason and observation in understanding the natural world."
+},
+{
+    question: "Excerpt from Sir Thomas More's Utopia (1516): \n\n'There are no locks upon the doors, for there is nothing to steal.'\n\nWhat Renaissance idea is reflected in this work?",
+    choices: [
+        "The belief in communal property and equality",
+        "The rejection of religious values",
+        "The celebration of individual wealth",
+        "The focus on military power"
+    ],
+    correctAnswer: 0,
+    explanation: "Thomas More’s 'Utopia' reflects Renaissance ideas of ideal societies based on equality and communal living."
+},
+{
+    question: "Excerpt from the Aztec account of the arrival of Cortés (1520): \n\n'They came in towers of wood, with thunder and lightning that killed our warriors.'\n\nWhat does this description reveal about the Aztec perception of Spanish technology?",
+    choices: [
+        "They were unimpressed by European technology",
+        "They viewed Spanish weapons as supernatural forces",
+        "They believed Spanish weapons were ineffective",
+        "They immediately adopted European technology"
+    ],
+    correctAnswer: 1,
+    explanation: "The Aztecs described Spanish weaponry like cannons as 'thunder and lightning,' reflecting awe and fear of their power."
+},
+{
+    question: "Excerpt from Queen Elizabeth I’s speech to the troops at Tilbury (1588): \n\n'I have the body of a weak and feeble woman; but I have the heart and stomach of a king, and of a king of England too.'\n\nWhat Renaissance idea does Elizabeth emphasize?",
+    choices: [
+        "The divine right of kings",
+        "The strength of individual leadership",
+        "The rejection of monarchy",
+        "The importance of religious conversion"
+    ],
+    correctAnswer: 1,
+    explanation: "Elizabeth’s speech emphasizes her personal strength and leadership, reflecting Renaissance ideas of individualism and power."
+}
+ ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionContainer = document.getElementById("question-container");
+        const feedbackContainer = document.getElementById("feedback");
+        const nextButton = document.getElementById("next-button");
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionContainer.innerHTML = `
+                <h2>${question.question}</h2>
+                ${question.choices.map((choice, index) => `
+                    <button class="choice-button" data-choice="${index}">${choice}</button>
+                `).join('')}
+            `;
+            feedbackContainer.innerHTML = "";
+            nextButton.style.display = "none";
+
+            const choiceButtons = document.querySelectorAll(".choice-button");
+            choiceButtons.forEach(button => {
+                button.addEventListener("click", (e) => {
+                    const userAnswer = parseInt(e.target.getAttribute("data-choice"));
+                    checkAnswer(userAnswer);
+                });
+            });
+        }
+
+        function checkAnswer(userAnswer) {
+            const question = questions[currentQuestion];
+            const isCorrect = userAnswer === question.correctAnswer;
+            feedbackContainer.innerHTML = `
+                <p>${isCorrect ? "Correct!" : "Incorrect."}</p>
+                <p>${isCorrect ? "" : `The correct answer is: ${question.choices[question.correctAnswer]}`}</p>
+                <p>${question.explanation}</p>
+            `;
+            if (isCorrect) score++;
+            nextButton.style.display = "block";
+
+            // Disable buttons after selecting an answer
+            const choiceButtons = document.querySelectorAll(".choice-button");
+            choiceButtons.forEach(button => button.disabled = true);
+        }
+
+        nextButton.addEventListener("click", () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                questionContainer.innerHTML = `
+                    <h2>Quiz Complete!</h2>
+                    <p>Your Score: ${score} / ${questions.length}</p>
+                `;
+                nextButton.style.display = "none";
+            }
+        });
+
+        // Load the first question on startup
+        loadQuestion();
+    </script>
+</body>
+</html>
